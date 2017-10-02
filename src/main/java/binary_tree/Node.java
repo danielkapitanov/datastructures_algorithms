@@ -20,9 +20,6 @@ public class Node {
 
     @Override
     public String toString() {
-        return "Node{" +
-                "key=" + key +
-                ", name='" + name + '\'' +
-                '}';
+        return "Node{key=" + key + ", name=" + name + "}";
     }
 }

@@ -19,18 +19,22 @@ public class BinaryTreeController {
         theTree.inOrderTraverse(theTree.root);
         System.out.println("--------");
 
+
         System.out.println("Preorder traverse");
         theTree.preorderTraverseTree(theTree.root);
         System.out.println("--------");
+
 
         System.out.println("Postorder traverse");
         theTree.postOrderTraverseTree(theTree.root);
         System.out.println("--------");
 
+
         // Find the node with key 75
         System.out.println("Node with the key 75");
         System.out.println(theTree.findNode(75));
         System.out.println("--------");
+
 
         System.out.println("Node 85 deletion");
         theTree.deleteNode(85);

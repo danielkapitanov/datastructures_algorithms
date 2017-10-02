@@ -6,20 +6,29 @@ package main.java.hashmap;
  */
 class Student {
 
+    String key;
+
     String first_name;
     String last_name;
 
     Student nextStudent;
 
-    public Student(String first_name, String last_name, Student nextStudent) {
+
+    public Student(String key, String first_name, String last_name) {
+        this.key = key;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.nextStudent = nextStudent;
     }
 
-    public Student(String first_name, String last_name) {
-        this.first_name = first_name;
-        this.last_name = last_name;
+
+
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getFirst_name() {

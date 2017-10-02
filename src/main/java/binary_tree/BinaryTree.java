@@ -5,6 +5,8 @@ package main.java.binary_tree;
  */
 public class BinaryTree {
 
+    //the root node where it all starts; it will have a
+    //left child and a right child
     Node root;
 
     public void addNode(int key, String name){
@@ -15,16 +17,21 @@ public class BinaryTree {
         //if there is no root this becomes root
         if (root == null) {
             root = newNode;
+
+        //else the newly created node will have to traverse
+        //the tree to find its right place corresponding to its key
         } else {
 
-            //set root as the node we will start
-            //with as we traverse the tree
+            //set root as the node we will start at
+            //as we start traversing the tree
             Node focusNode = root;
 
             //future parent for our new Node
             Node parent;
 
+            //infinite loop
             while (true){
+
                 //root is the top parent so we start there
                 parent = focusNode;
 
@@ -34,7 +41,7 @@ public class BinaryTree {
                     //switch focus to the left child
                     focusNode = focusNode.leftChild;
 
-                    //if the left child has no no children
+                    //if the left child has no children
                     if (focusNode == null) {
                         //then place the new node on the left of it
                         parent.leftChild = newNode;
@@ -52,13 +59,16 @@ public class BinaryTree {
                         return; //all done
                     }
                 }
+
             }
         }
 
     }
 
-    //all nodes are visited in ascending order
-    //recursion is used to go to one node and then go to its child nodes and so forth
+
+    //all nodes are visited in ascending order (will print out all values in binary tree
+    //sorted) recursion is used to go to one node and then go to its
+    //child nodes and so forth
     public void inOrderTraverse(Node focusNode) {
 
         if (focusNode != null){
@@ -76,6 +86,8 @@ public class BinaryTree {
     }
 
 
+    //first prints out the focusNode, then the left child
+    //and then the right child
     public void preorderTraverseTree(Node focusNode) {
         if (focusNode != null) {
             System.out.println(focusNode);
@@ -84,6 +96,9 @@ public class BinaryTree {
         }
     }
 
+
+    //first prints out the left child, then the right child
+    //and then the focusNode
     public void postOrderTraverseTree(Node focusNode) {
         if (focusNode != null) {
             postOrderTraverseTree(focusNode.leftChild);
@@ -100,10 +115,14 @@ public class BinaryTree {
         //while we havent found the Node keep looking
         while (focusNode.key != key) {
 
-            //if we should search to the left
+            //if they key of the node we're looking for is smaller than the current
+            //focusNode key, shift focusNode to the left child
             if (key < focusNode.key){
                 //shift the focus node to the left child
                 focusNode = focusNode.leftChild;
+
+            //if they key of the node we're looking for is larger than the current
+            //focusNode key, shift focusNode to the right child
             } else {
                 //shift the focus node to the right child
                 focusNode = focusNode.rightChild;
@@ -118,14 +137,19 @@ public class BinaryTree {
         return focusNode;
     }
 
+
     public Node deleteNode (int key) {
+
         Node nodeToDelete = findNode(key);
 
         //to be able to return it
         Node nodeRef = nodeToDelete;
 
+        //in case the nodeToDelete has neither left or right child,
+        //it will simply become null
         if (nodeToDelete.leftChild == null) {
             nodeToDelete = nodeToDelete.rightChild;
+
         } else {
             nodeToDelete = nodeToDelete.leftChild;
         }
